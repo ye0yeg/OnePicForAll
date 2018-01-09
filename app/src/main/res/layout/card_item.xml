@@ -4,12 +4,15 @@
               android:id="@+id/card_item_content"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:layout_margin="18dp"
+              android:background="#f0f"
               android:orientation="vertical"
               android:paddingLeft="5dp"
               android:paddingRight="5dp"
               tools:context=".MainActivity">
 
     <RelativeLayout
+        android:padding="4dp"
         android:id="@+id/card_top_layout"
         android:layout_width="match_parent"
         android:layout_height="230dp"
@@ -22,6 +25,7 @@
             android:scaleType="centerCrop"/>
 
         <View
+            android:layout_marginTop="10dp"
             android:id="@+id/maskView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -8,9 +8,9 @@ import cn.bmob.v3.BmobObject;
  * Created by ye on 2018/1/8.
  */
 
+
 class MyPicOnePic extends BmobObject {
     private String picUrl;
-
     private List<userComment> mUserComments;
 
     public String getPicUrl() {
@@ -30,6 +30,7 @@ class MyPicOnePic extends BmobObject {
     }
 
     class userComment {
+        //开始测试5张图
         String userName;
         String userAvtor;
         String commit;

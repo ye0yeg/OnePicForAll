@@ -17,12 +17,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import onepic.ye0yeg.com.onepicforall.event.UserEvent;
 
 /**
  * Created by ye on 2018/1/5.
@@ -38,6 +41,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         mUnbinder = ButterKnife.bind(this);
         EventBus.getDefault().register(this);
         initView();
+    }
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void onEvent(UserEvent event) {
     }
 
     @Override

@@ -9,23 +9,15 @@
     android:orientation="vertical"
     tools:context="onepic.ye0yeg.com.onepicforall.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/content"
+
+    <com.stone.card.library.CardSlidePanel
+        android:id="@+id/image_slide_panel"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-
-        <com.stone.card.library.CardSlidePanel
-            android:id="@+id/image_slide_panel"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:bottomMarginTop="38dp"
-            app:itemMarginTop="10dp"
-            app:yOffsetStep="13dp"/>
-
-
-    </FrameLayout>
+        android:layout_height="match_parent"
+        app:bottomMarginTop="38dp"
+        app:itemMarginTop="10dp"
+        app:yOffsetStep="13dp"
+        />
 
 
 </LinearLayout>
