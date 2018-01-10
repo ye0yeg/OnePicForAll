@@ -1,5 +1,7 @@
 package onepic.ye0yeg.com.onepicforall;
 
+import android.content.Intent;
+
 import java.util.List;
 
 import cn.bmob.v3.BmobObject;
@@ -12,6 +14,9 @@ import cn.bmob.v3.BmobObject;
 class MyPicOnePic extends BmobObject {
     private String picUrl;
     private List<userComment> mUserComments;
+
+    private Integer like;
+    private Integer unlike;
 
     public String getPicUrl() {
         return picUrl;
@@ -27,6 +32,22 @@ class MyPicOnePic extends BmobObject {
 
     public void setUserComments(List<userComment> userComments) {
         mUserComments = userComments;
+    }
+
+    public Integer getLike() {
+        return like;
+    }
+
+    public void setLike(Integer like) {
+        this.like = like;
+    }
+
+    public Integer getUnlike() {
+        return unlike;
+    }
+
+    public void setUnlike(Integer unlike) {
+        this.unlike = unlike;
     }
 
     class userComment {

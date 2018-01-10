@@ -43,4 +43,7 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     //CDN文件服务使用okhttp相关包进行文件的上传和下载（必填）
     compile 'com.squareup.okio:okio:1.4.0'
+
+    compile 'com.github.GrenderG:Toasty:1.1.3'
+
 }
