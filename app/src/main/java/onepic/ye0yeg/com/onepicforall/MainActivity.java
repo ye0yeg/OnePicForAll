@@ -1,6 +1,5 @@
 package onepic.ye0yeg.com.onepicforall;
 
-import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Message;
@@ -24,7 +23,9 @@ import es.dmoral.toasty.Toasty;
 import onepic.ye0yeg.com.onepicforall.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
-
+/*
+*adb connect 127.0.0.1:21503
+* */
 
     private static final int GETDATA = 1001;
     private ArrayList<MyPicOnePic> mMyPicOnePics;
@@ -157,11 +158,13 @@ public class MainActivity extends BaseActivity {
         ImageView imageView;
         TextView mTvLike;
         TextView mTvUnlike;
+        TextView mUserName;
 
         public ViewHolder(View view) {
             imageView = view.findViewById(R.id.card_image_view);
             mTvLike = view.findViewById(R.id.tv_like);
             mTvUnlike = view.findViewById(R.id.tv_unlike);
+            mUserName = view.findViewById(R.id.tv_user_name);
         }
 
         public void bindData(MyPicOnePic itemData) {
@@ -169,6 +172,7 @@ public class MainActivity extends BaseActivity {
             //绑定原子计数器，然后显示，其次点击，点击事件以后，原子+1。
             mTvLike.setText(itemData.getLike().toString());
             mTvUnlike.setText(itemData.getUnlike().toString());
+            mUserName.bringToFront();
             initViewHolderListener();
         }
 
