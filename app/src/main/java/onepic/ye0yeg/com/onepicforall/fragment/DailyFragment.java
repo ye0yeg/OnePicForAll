@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
@@ -67,7 +68,10 @@ public class DailyFragment extends Fragment {
             super.handleMessage(msg);
             switch (msg.what) {
                 case GOTDATA:
-                    setLvAdapter();
+//                    setLvAdapter();
+
+//                    mHomeAdapter.setData(mHomePicEntities, 22);
+//                    mHomeAdapter.notifyDataSetChanged();
                     break;
             }
 
@@ -82,10 +86,11 @@ public class DailyFragment extends Fragment {
         mHomePicEntities = new ArrayList<>();
         mContext = getContext();
         ButterKnife.bind(this, mView);
+
         findView();
         init();
         setListener();
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return mView;
     }
 
     private void setListener() {
@@ -134,6 +139,8 @@ public class DailyFragment extends Fragment {
             public void onSuccess(List<HomePicEntity> list) {
                 if (list.size() != 0) {
                     mHomePicEntities = list;
+                    mHomeAdapter = new HomeAdapter(mContext,list);
+                    lvHome.setAdapter(mHomeAdapter);
                     mHandler.sendEmptyMessage(GOTDATA);
                 }
             }
@@ -178,8 +185,7 @@ public class DailyFragment extends Fragment {
     }
 
     private void setLvAdapter() {
-        mHomeAdapter = new HomeAdapter(mContext,mHomePicEntities);
-        lvHome.setAdapter(mHomeAdapter);
+
     }
 
 }

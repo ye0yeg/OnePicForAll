@@ -5,15 +5,14 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import onepic.ye0yeg.com.onepicforall.R;
 import onepic.ye0yeg.com.onepicforall.entity.HomePicEntity;
@@ -22,32 +21,28 @@ import onepic.ye0yeg.com.onepicforall.entity.HomePicEntity;
  * Created by ye on 2018/1/17.
  */
 
-public class HomeAdapter extends SimpleAdapter {
+public class HomeAdapter extends BaseAdapter {
     private static final int PICTURE = 1;
     private static final int TEXT = 2;
     private Context mContext;
     private ArrayList<HomePicEntity> mHomePicEntities;
+    private int mA;
 
-    /**
-     * Constructor
-     *
-     * @param context  The context where the View associated with this SimpleAdapter is running
-     * @param data     A List of Maps. Each entry in the List corresponds to one row in the list. The
-     *                 Maps contain the data for each row, and should include all the entries specified in
-     *                 "from"
-     * @param resource Resource identifier of a view layout that defines the views for this list
-     *                 item. The layout file should include at least those named views defined in "to"
-     * @param from     A list of column names that will be added to the Map associated with each
-     *                 item.
-     * @param to       The views that should display column in the "from" parameter. These should all be
-     *                 TextViews. The first N views in this list are given the values of the first N columns
-     */
+    //    public HomeAdapter(Context context, List<HomePicEntity> list) {
+//        super(context, null, R.layout.list_home_picture_item, null, null);
+//        mContext = context;
+//        mHomePicEntities = (ArrayList<HomePicEntity>) list;
+//    }
     public HomeAdapter(Context context, List<HomePicEntity> list) {
-        super(context, null, R.layout.list_home_picture_item, null, null);
+        mHomePicEntities = new ArrayList<>();
         mContext = context;
         mHomePicEntities = (ArrayList<HomePicEntity>) list;
     }
 
+    public void setData(List<HomePicEntity> list, int num) {
+        mHomePicEntities = (ArrayList<HomePicEntity>) list;
+        mA = num;
+    }
 
     @Override
     public int getItemViewType(int position) {
@@ -109,24 +104,24 @@ public class HomeAdapter extends SimpleAdapter {
                 View view = LayoutInflater.from(mContext).inflate(R.layout.list_home_picture_item, parent, false);
                 convertView = view;
                 if (convertView == null) {
-                    mViewHolder.mImageView = convertView.findViewById(R.id.iv);
-                    mViewHolder.tvTitle = convertView.findViewById(R.id.tv_title);
-                    mViewHolder.tvTime = convertView.findViewById(R.id.tv_time);
+                    mViewHolder.mImageView = (ImageView) convertView.findViewById(R.id.iv);
+                    mViewHolder.tvTitle = (TextView) convertView.findViewById(R.id.tv_title);
+                    mViewHolder.tvTime = (TextView) convertView.findViewById(R.id.tv_time);
                     convertView.setTag(mViewHolder);
                 } else {
                     if (convertView.getTag() instanceof ViewHolder) {
                         mViewHolder = (ViewHolder) convertView.getTag();
                     } else {
                         convertView = view;
-                        mViewHolder.mImageView = convertView.findViewById(R.id.iv);
-                        mViewHolder.tvTitle = convertView.findViewById(R.id.tv_title);
-                        mViewHolder.tvTime = convertView.findViewById(R.id.tv_time);
+                        mViewHolder.mImageView = (ImageView) convertView.findViewById(R.id.iv);
+                        mViewHolder.tvTitle = (TextView) convertView.findViewById(R.id.tv_title);
+                        mViewHolder.tvTime = (TextView) convertView.findViewById(R.id.tv_time);
                         convertView.setTag(mViewHolder);
                     }
                 }
 
                 Uri uri = Uri.parse(picUrl);
-                SimpleDraweeView draweeView = convertView.findViewById(R.id.iv);
+                ImageView draweeView = (SimpleDraweeView) convertView.findViewById(R.id.iv);
                 draweeView.setImageURI(uri);
 
                 mViewHolder.tvTitle.setText(title);
@@ -139,7 +134,10 @@ public class HomeAdapter extends SimpleAdapter {
                 TextView textView = (TextView) convertView.findViewById(R.id.tv_home_text);
                 //set data
                 text = homePicEntity.getDate();
-                textView.setText(text);
+//                textView.setText(text.toString());
+
+                textView.setTextSize(20);
+                textView.setText("-Weekend  special-");
                 return convertView;
 
             default:

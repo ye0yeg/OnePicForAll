@@ -6,14 +6,15 @@
                                                android:layout_height="match_parent"
                                                android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/lv_home"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null"
-        android:focusable="false"
-        android:scrollbars="none">
-    </ListView>
+
+        <ListView
+            android:id="@+id/lv_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:focusable="false"
+            android:scrollbars="none">
+        </ListView>
 
 
 </in.srain.cube.views.ptr.PtrClassicFrameLayout>
